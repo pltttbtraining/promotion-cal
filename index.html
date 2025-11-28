@@ -174,7 +174,7 @@
                     </select>
                 </div>
 
-                <!-- NEW: Deposit Multiplier -->
+                <!-- Deposit Multiplier -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">จำนวนเท่าของเบี้ยฯ (Multiplier) <span class="text-red-500">*</span></label>
                     <div class="flex items-center gap-2">
@@ -226,7 +226,7 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <!-- Insurance Summary -->
+                        <!-- Insurance Summary Card -->
                         <div class="bg-gradient-to-br from-blue-50 to-white p-6 rounded-2xl border border-blue-100 relative overflow-hidden">
                             <div class="absolute top-0 right-0 bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-bl-lg">Insurance</div>
                             <div class="flex flex-col items-center text-center">
@@ -234,7 +234,22 @@
                                     <i class="fa-solid fa-shield-halved text-xl brand-blue"></i>
                                 </div>
                                 <h4 class="text-gray-600 font-bold mb-1">ผลประโยชน์ประกัน</h4>
-                                <div class="text-sm text-gray-500 mb-2">ผลประโยชน์สุทธิ: <span id="resInsNet" class="font-semibold text-blue-800">0</span></div>
+                                
+                                <!-- Added: Total Premium & Return -->
+                                <div class="w-full space-y-2 mb-3 px-2">
+                                    <div class="flex justify-between text-sm border-b border-blue-50 pb-1">
+                                        <span class="text-gray-500">เบี้ยฯ รวม:</span>
+                                        <span id="resInsTotalCost" class="font-semibold text-gray-700">0</span>
+                                    </div>
+                                    <div class="flex justify-between text-sm border-b border-blue-50 pb-1">
+                                        <span class="text-gray-500">เงินคืน/ครบสัญญา:</span>
+                                        <span id="resInsTotalGet" class="font-semibold text-green-600">0</span>
+                                    </div>
+                                    <div class="flex justify-between text-sm">
+                                        <span class="text-gray-500">ผลประโยชน์สุทธิ:</span>
+                                        <span id="resInsNet" class="font-semibold text-blue-800">0</span>
+                                    </div>
+                                </div>
                                 
                                 <div id="insIRRBlock" class="mt-2 w-full pt-2 border-t border-blue-100">
                                     <div class="text-3xl font-bold brand-orange" id="resInsIRR">0.00%</div>
@@ -247,7 +262,7 @@
                             </div>
                         </div>
 
-                        <!-- Deposit Summary -->
+                        <!-- Deposit Summary Card -->
                         <div class="bg-gradient-to-br from-green-50 to-white p-6 rounded-2xl border border-green-100 relative overflow-hidden">
                             <div class="absolute top-0 right-0 bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-bl-lg">Deposit</div>
                             <div class="flex flex-col items-center text-center">
@@ -255,7 +270,22 @@
                                     <i class="fa-solid fa-building-columns text-xl text-green-700"></i>
                                 </div>
                                 <h4 class="text-gray-600 font-bold mb-1">ผลประโยชน์เงินฝาก</h4>
-                                <div class="text-sm text-gray-500 mb-2">ดอกเบี้ยสุทธิ: <span id="resDepNet" class="font-semibold text-green-700">0</span></div>
+                                
+                                <!-- Added: Principal & Total -->
+                                <div class="w-full space-y-2 mb-3 px-2">
+                                    <div class="flex justify-between text-sm border-b border-green-50 pb-1">
+                                        <span class="text-gray-500">เงินต้นฝาก:</span>
+                                        <span id="resDepPrincipal" class="font-semibold text-gray-700">0</span>
+                                    </div>
+                                    <div class="flex justify-between text-sm border-b border-green-50 pb-1">
+                                        <span class="text-gray-500">เงินรวมสุทธิ (ต้น+ดบ.):</span>
+                                        <span id="resDepTotalRec" class="font-semibold text-green-600">0</span>
+                                    </div>
+                                    <div class="flex justify-between text-sm">
+                                        <span class="text-gray-500">ดอกเบี้ยสุทธิ:</span>
+                                        <span id="resDepNet" class="font-semibold text-green-700">0</span>
+                                    </div>
+                                </div>
                                 
                                 <div class="mt-2 w-full pt-2 border-t border-green-100">
                                     <div class="text-3xl font-bold text-green-600" id="resDepIRR">0.00%</div>
@@ -349,14 +379,15 @@
                             <thead>
                                 <tr class="bg-green-700 text-white">
                                     <th class="py-3 px-4">สิ้นปีที่</th>
-                                    <th class="py-3 px-4">เงินต้น</th>
-                                    <th class="py-3 px-4">ดอกเบี้ยรับ</th>
+                                    <th class="py-3 px-4">เงินต้นคงเหลือ</th>
+                                    <th class="py-3 px-4">ดอกเบี้ยรับ (ต่อปี)</th>
                                 </tr>
                             </thead>
                             <tbody id="depTableBody" class="text-gray-700">
                                 <!-- JS Generated -->
                             </tbody>
                         </table>
+                        <p class="text-xs text-gray-400 mt-2 text-right">*ดอกเบี้ยคำนวณแบบ Simple Interest (ไม่ทบต้น)</p>
                     </div>
 
                     <!-- Dashboard Bottom Tab 3 -->
@@ -897,23 +928,56 @@
             let table = [];
             
             let years = Math.ceil(d.years);
-            let totalGross = principal * rate * d.years;
+            let totalGross = principal * rate * d.years; // Simple Interest: P * r * t
             
+            // Tax: 15% on TOTAL Gross if > 20,000
             let tax = (totalGross > 20000) ? totalGross * 0.15 : 0;
             let totalNet = totalGross - tax;
             
-            let netPerYear = totalNet / years;
-            let grossPerYear = totalGross / years;
+            // Annual Logic for display
+            // Simple Interest: Yearly interest = P * r (Gross)
+            // But we need to show Net? Or Gross? Usually Gross before tax or "Received".
+            // Since it's fixed deposit, usually receive at maturity.
+            // But user asked to show "Received in each year" and "Simple Interest".
+            // Let's assume proportional distribution for display or actual pay.
+            // Let's show the Accrued Interest per year.
             
+            // Interest per year (Gross)
+            let yearlyGross = principal * rate;
+            let yearlyNet = yearlyGross;
+            if (tax > 0) {
+                // If tax applies, it reduces the net received.
+                yearlyNet = yearlyGross * 0.85; 
+            }
+
+            // Correction for partial year (TD 6 Months)
+            // If years = 1 (rounded up from 0.5), we should adjust.
+            // Actually `years` is ceiling of duration.
+            // If TD6, duration is 0.5.
+            // Loop runs for i=1 to 1.
+            // yearlyGross calculated as P * r (1 year rate).
+            // But if duration < 1, interest is P * r * 0.5.
+            // The `totalGross` formula `principal * rate * d.years` is correct.
+            // For TD6 (0.5 yr), totalGross is correct.
+            // Table loop runs 1 time.
+            // We should just use totalGross / years for the table row to be accurate for that "period".
+            
+            let displayInterestPerYear = totalNet / years; // Distribute Net evenly
+
             flows = [-principal];
 
             for(let i=1; i<=years; i++) {
-                let interest = (i === years) ? totalGross : 0; 
-                if (i===years) {
-                    table.push({ year: i, principal: principal, interest: totalGross }); 
-                } else {
-                    table.push({ year: i, principal: principal, interest: 0 });
-                }
+                // Table: Show simple interest received (or accrued) this year
+                // User said "show interest received in each year"
+                
+                // Logic: Principal remains constant (Simple Interest)
+                // Interest per year is constant.
+                
+                table.push({ 
+                    year: i, 
+                    principal: principal, 
+                    interest: displayInterestPerYear // Show the net amount for that year
+                });
             }
             
             let finalValue = principal + totalNet;
@@ -989,7 +1053,14 @@
             const irrBlock = document.getElementById('insIRRBlock');
             const protBlock = document.getElementById('insProtectBlock');
             
+            // Update Insurance Card Fields
+            document.getElementById('resInsTotalCost').innerText = fmt(ins.totalPrem);
+            document.getElementById('resInsTotalGet').innerText = fmt(ins.totalBen);
             document.getElementById('resInsNet').innerText = fmt(ins.net);
+            
+            // Update Deposit Card Fields
+            document.getElementById('resDepPrincipal').innerText = fmt(dep.principal);
+            document.getElementById('resDepTotalRec').innerText = fmt(dep.principal + dep.totalNet);
             document.getElementById('resDepNet').innerText = fmt(dep.totalNet);
 
             if (prod.type === 'whole_life') {
