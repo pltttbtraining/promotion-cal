@@ -436,105 +436,148 @@
                     <div class="bg-blue-50 text-blue-900 px-6 py-3 rounded-lg font-bold text-xl border border-blue-100 shadow-sm">
                         PROMOTION CAL.
                     </div>
+                    <p class="text-xs text-gray-500 mt-2">Generated: <span id="pdfGenDate">-</span></p>
                 </div>
             </div>
 
             <!-- Content Grid -->
-            <div class="grid grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 gap-8">
                 
                 <!-- 1. Plan Info -->
-                <div class="col-span-2 bg-white rounded-3xl p-8 shadow-md border border-gray-200 flex justify-between items-center">
-                    <div>
-                         <p class="text-sm text-gray-400 uppercase font-semibold">แบบประกัน</p>
-                         <p id="pdfProdName" class="text-2xl font-bold text-gray-800 mt-1">...</p>
-                    </div>
-                    <div>
-                         <p class="text-sm text-gray-400 uppercase font-semibold">Promotion</p>
-                         <p id="pdfPromoName" class="text-2xl font-bold text-blue-600 mt-1">...</p>
-                    </div>
-                    <div class="text-right">
-                         <p class="text-sm text-gray-400 uppercase font-semibold">ดอกเบี้ยพิเศษ</p>
-                         <p id="pdfPromoRate" class="text-4xl font-bold text-orange-500">0%</p>
-                    </div>
-                </div>
-
-                <!-- 2. Insurance -->
-                <div class="bg-blue-50 rounded-3xl p-8 border border-blue-100 relative shadow-sm">
-                    <div class="absolute top-6 right-6 text-blue-200">
-                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.352-.272-2.636-.759-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08zm3.094 8.016a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" /></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-blue-900 mb-6">Insurance</h3>
-                    <div class="space-y-4">
-                         <div class="flex justify-between text-base">
-                            <span class="text-gray-500">เบี้ยฯ รวม</span>
-                            <span id="pdfInsCost" class="font-bold text-gray-800">0</span>
-                         </div>
-                         <div class="flex justify-between text-base">
-                            <span class="text-gray-500">ผลประโยชน์รวม</span>
-                            <span id="pdfInsBenefit" class="font-bold text-green-600">0</span>
-                         </div>
-                         <!-- Dynamic Row -->
-                         <div class="flex justify-between text-base">
-                            <span id="pdfLblInsNet" class="text-gray-500">ผลประโยชน์สุทธิ</span>
-                            <span id="pdfInsNet" class="font-bold text-orange-500">0</span>
-                         </div>
-                         <div class="flex justify-between text-base border-t border-blue-200 pt-3 mt-2">
-                            <span id="pdfLblInsIRR" class="text-blue-900 font-semibold">IRR Insurance</span>
-                            <span id="pdfInsIRR" class="font-bold text-xl text-blue-900 text-right">0%</span>
-                         </div>
-                    </div>
-                </div>
-
-                <!-- 3. Deposit -->
-                <div class="bg-green-50 rounded-3xl p-8 border border-green-100 relative shadow-sm">
-                     <div class="absolute top-6 right-6 text-green-200">
-                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M10.464 8.746c.995-1.043 2.654-1.029 3.674-.013.937.935.968 2.378.163 3.483l-3.328 4.569a1.498 1.498 0 01-2.126.294 1.503 1.503 0 01-.274-2.136l1.89-2.197z" /><path d="M12 2.25a.75.75 0 01.75.75v18a.75.75 0 01-1.5 0v-18a.75.75 0 01.75-.75z" /><path fill-rule="evenodd" d="M12 2.25a9.75 9.75 0 00-9.75 9.75c0 2.26.78 4.341 2.095 6.027a.75.75 0 01-1.19.827A11.25 11.25 0 0110.5 2.505V4.62a2.25 2.25 0 103 0V2.505A11.25 11.25 0 0120.845 18.854a.75.75 0 01-1.19-.827A9.75 9.75 0 0012 2.25z" clip-rule="evenodd" /></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-green-900 mb-6">Deposit</h3>
-                     <div class="space-y-4">
-                         <div class="flex justify-between text-base">
-                            <span class="text-gray-500">เงินต้น</span>
-                            <span id="pdfDepPrincipal" class="font-bold text-gray-800">0</span>
-                         </div>
-                         <div class="flex justify-between text-base">
-                            <span class="text-gray-500">ดอกเบี้ย (ก่อนภาษี)</span>
-                            <span id="pdfDepGross" class="font-bold text-blue-600">0</span>
-                         </div>
-                          <div class="flex justify-between text-base">
-                            <span class="text-gray-500">ดอกเบี้ยสุทธิ</span>
-                            <span id="pdfDepNet" class="font-bold text-green-700">0</span>
-                         </div>
-                         <div class="flex justify-between text-base border-t border-green-200 pt-3 mt-2">
-                            <span class="text-green-900 font-semibold">IRR Deposit</span>
-                            <span id="pdfDepIRR" class="font-bold text-xl text-green-900">0%</span>
-                         </div>
-                    </div>
-                </div>
-
-                <!-- 4. Summary (Light/Bright Card) -->
-                <div class="col-span-2 mt-4">
-                    <div id="pdfSummaryCard" class="bg-white rounded-3xl p-8 border-2 border-yellow-400 relative overflow-hidden shadow-md">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-50 opacity-50 rounded-bl-full"></div>
-                        <div id="pdfSummaryContent">
-                             <!-- Default Content -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="border-r border-gray-200 pr-6">
+                            <p class="text-sm text-gray-500 uppercase font-semibold">แบบประกัน</p>
+                            <p id="pdfProdName" class="text-2xl font-bold text-gray-800 mt-2">...</p>
+                        </div>
+                        <div class="border-r border-gray-200 pr-6">
+                            <p class="text-sm text-gray-500 uppercase font-semibold">โปรโมชั่น</p>
+                            <p id="pdfPromoName" class="text-2xl font-bold text-blue-600 mt-2">...</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 uppercase font-semibold">อัตราดอกเบี้ยพิเศษ</p>
+                            <p id="pdfPromoRate" class="text-4xl font-bold text-orange-500 mt-2">0%</p>
                         </div>
                     </div>
                 </div>
 
-            </div>
-
-             <!-- End Credit / Footer (Separated) -->
-            <div class="absolute bottom-12 w-full left-0 px-10">
-                <div class="flex flex-col space-y-4">
-                    <div class="text-left">
-                         <p class="text-sm text-gray-500 font-bold">Generates : <span id="pdfGenDate">-</span></p>
+                <!-- 2. Comparison Cards -->
+                <div class="grid grid-cols-2 gap-8">
+                    <!-- Insurance Card -->
+                    <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 border border-blue-100 shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.352-.272-2.636-.759-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08zm3.094 8.016a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-blue-900">Insurance Summary</h3>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center py-3 border-b border-blue-100">
+                                <span class="text-gray-600">เบี้ยประกันรวม</span>
+                                <span id="pdfInsCost" class="font-bold text-gray-800 text-lg">0</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-blue-100">
+                                <span class="text-gray-600">ผลประโยชน์รวม</span>
+                                <span id="pdfInsBenefit" class="font-bold text-green-600 text-lg">0</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-blue-100">
+                                <span id="pdfLblInsNet" class="text-gray-600">ผลประโยชน์สุทธิ</span>
+                                <span id="pdfInsNet" class="font-bold text-orange-500 text-lg">0</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-4 mt-2 bg-blue-50 p-4 rounded-lg">
+                                <div>
+                                    <span id="pdfLblInsIRR" class="font-bold text-blue-900">IRR Insurance</span>
+                                    <p class="text-xs text-gray-500 mt-1">อัตราผลตอบแทนภายใน</p>
+                                </div>
+                                <span id="pdfInsIRR" class="font-bold text-2xl text-blue-900">0%</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="border-t border-gray-300 pt-4 text-center">
-                        <p class="text-xs text-gray-400 leading-relaxed mx-auto max-w-2xl">
-                            เอกสารนี้จัดทำเพื่อสรุปผลประโยชน์ของประกันและเงินฝาก จาก PROMOTION เพื่อจำลองผลประโยชน์ที่จะได้รับ ไม่สามารถใช้อ้างอิง ในการรับสิทธิต่างๆ ได้
-                        </p>
+
+                    <!-- Deposit Card -->
+                    <div class="bg-gradient-to-br from-green-50 to-white rounded-2xl p-8 border border-green-100 shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M10.464 8.746c.995-1.043 2.654-1.029 3.674-.013.937.935.968 2.378.163 3.483l-3.328 4.569a1.498 1.498 0 01-2.126.294 1.503 1.503 0 01-.274-2.136l1.89-2.197z" />
+                                    <path d="M12 2.25a.75.75 0 01.75.75v18a.75.75 0 01-1.5 0v-18a.75.75 0 01.75-.75z" />
+                                    <path fill-rule="evenodd" d="M12 2.25a9.75 9.75 0 00-9.75 9.75c0 2.26.78 4.341 2.095 6.027a.75.75 0 01-1.19.827A11.25 11.25 0 0110.5 2.505V4.62a2.25 2.25 0 103 0V2.505A11.25 11.25 0 0120.845 18.854a.75.75 0 01-1.19-.827A9.75 9.75 0 0012 2.25z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-green-900">Deposit Summary</h3>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center py-3 border-b border-green-100">
+                                <span class="text-gray-600">เงินต้นฝาก</span>
+                                <span id="pdfDepPrincipal" class="font-bold text-gray-800 text-lg">0</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-green-100">
+                                <span class="text-gray-600">ดอกเบี้ยก่อนภาษี</span>
+                                <span id="pdfDepGross" class="font-bold text-blue-600 text-lg">0</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-green-100">
+                                <span class="text-gray-600">ดอกเบี้ยสุทธิ</span>
+                                <span id="pdfDepNet" class="font-bold text-green-700 text-lg">0</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-4 mt-2 bg-green-50 p-4 rounded-lg">
+                                <div>
+                                    <span class="font-bold text-green-900">อัตราดอกเบี้ย</span>
+                                    <p class="text-xs text-gray-500 mt-1">ต่อปี (หลังหักภาษี)</p>
+                                </div>
+                                <span id="pdfDepIRR" class="font-bold text-2xl text-green-900">0%</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- 3. Summary Card -->
+                <div class="mt-8">
+                    <div class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-8 text-white shadow-xl">
+                        <div class="text-center mb-6">
+                            <p class="text-gray-300 text-sm uppercase tracking-widest">สรุปผลประโยชน์สุทธิรวม</p>
+                            <h2 id="pdfNetProfit" class="text-5xl font-bold text-green-400 mt-2">0.00</h2>
+                            <p class="text-gray-400 mt-1">บาท (หลังหักต้นทุนและภาษีทั้งหมด)</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-6 mt-8">
+                            <div class="bg-white/10 p-4 rounded-xl">
+                                <p class="text-gray-300 text-sm">ระยะเวลาประกัน</p>
+                                <p id="pdfCoverTerm" class="text-xl font-bold mt-1">0 ปี</p>
+                            </div>
+                            <div class="bg-white/10 p-4 rounded-xl">
+                                <p class="text-gray-300 text-sm">ระยะเวลาเงินฝาก</p>
+                                <p id="pdfDepositTerm" class="text-xl font-bold mt-1">0 ปี</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Footer Notes -->
+                <div class="mt-10 pt-8 border-t border-gray-200">
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-yellow-500 mr-3 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                            </svg>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">ข้อควรทราบ</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">
+                                    เอกสารนี้จัดทำเพื่อสรุปผลประโยชน์การลงทุนจากโปรโมชั่น TTB เท่านั้น 
+                                    ผลประโยชน์ที่แสดงเป็นไปตามสมมติฐานการคำนวณ และอาจเปลี่ยนแปลงได้ตามเงื่อนไขของบริษัทประกันและธนาคาร 
+                                    กรุณาตรวจสอบรายละเอียดกับสัญญาประกันภัยและข้อกำหนดเงินฝากก่อนตัดสินใจลงทุน
+                                </p>
+                                <p class="text-xs text-gray-500 mt-4">
+                                    Generated by PROMOTION CAL. © Training Specialist | เอกสารนี้ไม่สามารถใช้อ้างอิงทางกฎหมายได้
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -565,23 +608,232 @@
 
         // --- Data Configuration ---
         const products = {
-            "wealth_15_5_plus": { name: "Global Index 15/5 + พลัส", group: 1, minAge: 0, maxAge: 70, minSum: 50000, payTerm: 5, coverTerm: 15, cbRate: 2.5, cbFreq: 2, matRate: 500, type: "saving" },
-            "wealth_15_5_max": { name: "Global Index 15/5 แม็กซ์", group: 1, minAge: 0, maxAge: 70, minSum: 50000, payTerm: 5, coverTerm: 15, cbRate: 1, cbFreq: 2, matRate: 500, type: "saving" },
-            "wealth_99_5": { name: "ส่งต่อความมั่งคั่ง 99/5", group: 1, minAge: 0, maxAge: 70, minSum: 50000, payTerm: 5, coverTerm: 99, cbRate: 0, cbFreq: 0, matRate: 100, type: "whole_life" },
-            "wealth_happy_99_10": { name: "Happy Life Protect 99/10", group: 1, minAge: 0, maxAge: 50, minSum: 200000, payTerm: 10, coverTerm: 99, cbRate: 0, cbFreq: 0, matRate: 150, type: "whole_life" },
-            "wealth_legacy_99_3": { name: "Ultimate Legacy 99/3", group: 1, minAge: 0, maxAge: 75, minSum: 10000000, payTerm: 3, coverTerm: 99, cbRate: 0, cbFreq: 0, matRate: 100, type: "whole_life" },
-            "wealth_treasure_2": { name: "The Treasure Plan 2", group: 1, minAge: 0, maxAge: 70, minSum: 200000, payTerm: 8, coverTerm: 88, cbRate: 8, cbFreq: 1, matRate: 888, endAge: 88, type: "saving" }, 
-            "wealth_treasure_plus": { name: "The Treasure Plus", group: 1, minAge: 0, maxAge: 70, minSum: 200000, payTerm: 8, coverTerm: 88, cbRate: 8, cbFreq: 1, matRate: 888, endAge: 88, type: "saving" },
-            "wealth_treasure_extra": { name: "The Treasure Extra", group: 1, minAge: 0, maxAge: 65, minSum: 100000, payTerm: 8, coverTerm: 88, cbRate: 10, cbFreq: 1, matRate: 800, endAge: 88, type: "saving" },
-            "saving_14_6": { name: "Money Saver 14/6", group: 2, minAge: 0, maxAge: 80, minSum: 50000, payTerm: 6, coverTerm: 14, customCB: true, matRate: 654, type: "saving" },
-            "saving_10_5": { name: "Smart Bonus 10/5", group: 2, minAge: 0, maxAge: 70, minSum: 1, payTerm: 5, coverTerm: 10, customCB: true, matRate: 511, type: "saving" },
-            "saving_15_6": { name: "Money Saver 15/6", group: 2, minAge: 0, maxAge: 70, minSum: 100000, payTerm: 6, coverTerm: 15, cbRate: 2.5, cbFreq: 1, matRate: 150, type: "saving" },
-            "saving_11_3": { name: "Premium Saver 11/3", group: 2, minAge: 0, maxAge: 80, minSum: 300000, payTerm: 3, coverTerm: 11, customCB: true, matRate: 349.5, type: "saving" }
+            "wealth_15_5_plus": { 
+                name: "Global Index 15/5 + พลัส", 
+                group: 1, 
+                minAge: 0, 
+                maxAge: 70, 
+                minSum: 50000, 
+                payTerm: 5, 
+                coverTerm: 15, 
+                cashbackYears: [2,4,6,8,10,12,14],
+                cashbackRate: 2.5,
+                maturityRate: 500, 
+                type: "saving",
+                premiumCalc: "fixed" // Fixed premium = sum assured
+            },
+            "wealth_15_5_max": { 
+                name: "Global Index 15/5 แม็กซ์", 
+                group: 1, 
+                minAge: 0, 
+                maxAge: 70, 
+                minSum: 50000, 
+                payTerm: 5, 
+                coverTerm: 15, 
+                cashbackYears: [2,4,6,8,10,12,14],
+                cashbackRate: 1,
+                maturityRate: 500, 
+                type: "saving",
+                premiumCalc: "fixed"
+            },
+            "wealth_99_5": { 
+                name: "ส่งต่อความมั่งคั่ง 99/5", 
+                group: 1, 
+                minAge: 0, 
+                maxAge: 70, 
+                minSum: 50000, 
+                payTerm: 5, 
+                coverTerm: 99, 
+                cashbackYears: [],
+                cashbackRate: 0,
+                maturityRate: 100, 
+                type: "whole_life",
+                premiumCalc: "table" // Needs premium table lookup
+            },
+            "wealth_happy_99_10": { 
+                name: "Happy Life Protect 99/10", 
+                group: 1, 
+                minAge: 0, 
+                maxAge: 50, 
+                minSum: 200000, 
+                payTerm: 10, 
+                coverTerm: 99, 
+                cashbackYears: [],
+                cashbackRate: 0,
+                maturityRate: 150, 
+                type: "whole_life",
+                premiumCalc: "table"
+            },
+            "wealth_legacy_99_3": { 
+                name: "Ultimate Legacy 99/3", 
+                group: 1, 
+                minAge: 0, 
+                maxAge: 75, 
+                minSum: 10000000, 
+                payTerm: 3, 
+                coverTerm: 99, 
+                cashbackYears: [],
+                cashbackRate: 0,
+                maturityRate: 100, 
+                type: "whole_life",
+                premiumCalc: "table"
+            },
+            "wealth_treasure_2": { 
+                name: "The Treasure Plan 2", 
+                group: 1, 
+                minAge: 0, 
+                maxAge: 70, 
+                minSum: 200000, 
+                payTerm: 8, 
+                coverTerm: 88, 
+                cashbackYears: Array.from({length: 87}, (_, i) => i + 1), // Year 1-87
+                cashbackRate: 8,
+                maturityRate: 888, 
+                endAge: 88, 
+                type: "saving",
+                premiumCalc: "table"
+            }, 
+            "wealth_treasure_plus": { 
+                name: "The Treasure Plus", 
+                group: 1, 
+                minAge: 0, 
+                maxAge: 70, 
+                minSum: 200000, 
+                payTerm: 8, 
+                coverTerm: 88, 
+                cashbackYears: Array.from({length: 87}, (_, i) => i + 1), // Year 1-87
+                cashbackRate: 8,
+                maturityRate: 888, 
+                endAge: 88, 
+                type: "saving",
+                premiumCalc: "table"
+            },
+            "wealth_treasure_extra": { 
+                name: "The Treasure Extra", 
+                group: 1, 
+                minAge: 0, 
+                maxAge: 65, 
+                minSum: 100000, 
+                payTerm: 8, 
+                coverTerm: 88, 
+                cashbackYears: Array.from({length: 87}, (_, i) => i + 1), // Year 1-87
+                cashbackRate: 10,
+                maturityRate: 800, 
+                endAge: 88, 
+                type: "saving",
+                premiumCalc: "table"
+            },
+            "saving_14_6": { 
+                name: "Money Saver 14/6", 
+                group: 2, 
+                minAge: 0, 
+                maxAge: 80, 
+                minSum: 50000, 
+                payTerm: 6, 
+                coverTerm: 14, 
+                cashbackYears: [1,2,3,4,5,6,7,8,9,10,11,12,13],
+                cashbackRates: {
+                    1: 2, 2: 2, 3: 2, 4: 2, 5: 2, 6: 2,
+                    7: 4, 8: 4, 9: 4, 10: 4, 11: 4, 12: 4, 13: 4
+                },
+                maturityRate: 654, 
+                type: "saving",
+                premiumCalc: "age_band"
+            },
+            "saving_10_5": { 
+                name: "Smart Bonus 10/5", 
+                group: 2, 
+                minAge: 0, 
+                maxAge: 70, 
+                minSum: 30000, 
+                payTerm: 5, 
+                coverTerm: 10, 
+                cashbackYears: [2,4,6,8],
+                cashbackRate: 1,
+                maturityRate: 511, 
+                type: "saving",
+                premiumCalc: "fixed"
+            },
+            "saving_15_6": { 
+                name: "Money Saver 15/6", 
+                group: 2, 
+                minAge: 0, 
+                maxAge: 70, 
+                minSum: 50000, 
+                payTerm: 6, 
+                coverTerm: 15, 
+                cashbackYears: Array.from({length: 14}, (_, i) => i + 1), // Year 1-14
+                cashbackRate: 2.5,
+                maturityRate: 150, 
+                type: "saving",
+                premiumCalc: "age_band"
+            },
+            "saving_11_3": { 
+                name: "Premium Saver 11/3", 
+                group: 2, 
+                minAge: 0, 
+                maxAge: 80, 
+                minSum: 100000, 
+                payTerm: 3, 
+                coverTerm: 11, 
+                cashbackYears: [2,4,6,8,10],
+                cashbackRate: 1,
+                maturityRate: 349.5, 
+                type: "saving",
+                premiumCalc: "fixed"
+            }
         };
 
         const promotions = {
             "td36": { name: "TD 36 Months", interest: 1.50, years: 3, group1_mult: 20, group2_mult: 10 },
             "td6": { name: "TD 6 Months", interest: 1.25, years: 0.5, group1_mult: 15, group2_mult: 7.5 }
+        };
+
+        // Premium tables for complex products (simplified for demo)
+        const premiumTables = {
+            // Simplified premium rates per 1,000 THB sum assured
+            "wealth_99_5": {
+                male: Array.from({length: 70}, (_, i) => 10 + i*0.5), // Example rates
+                female: Array.from({length: 70}, (_, i) => 9 + i*0.45)
+            },
+            "wealth_happy_99_10": {
+                male: Array.from({length: 50}, (_, i) => 15 + i*0.6),
+                female: Array.from({length: 50}, (_, i) => 14 + i*0.55)
+            },
+            "wealth_legacy_99_3": {
+                male: Array.from({length: 75}, (_, i) => 8 + i*0.3),
+                female: Array.from({length: 75}, (_, i) => 7.5 + i*0.28)
+            },
+            "wealth_treasure_2": {
+                male: Array.from({length: 70}, (_, i) => 12 + i*0.4),
+                female: Array.from({length: 70}, (_, i) => 11 + i*0.38)
+            },
+            "wealth_treasure_plus": {
+                male: Array.from({length: 70}, (_, i) => 13 + i*0.42),
+                female: Array.from({length: 70}, (_, i) => 12 + i*0.4)
+            },
+            "wealth_treasure_extra": {
+                male: Array.from({length: 65}, (_, i) => 14 + i*0.45),
+                female: Array.from({length: 65}, (_, i) => 13 + i*0.43)
+            }
+        };
+
+        // Age band rates for money saver products
+        const ageBandRates = {
+            "saving_14_6": {
+                "0-50": 970,
+                "51-70": 980,
+                "71-80": 1000
+            },
+            "saving_15_6": {
+                "0-40": 260,
+                "41-45": 265,
+                "46-50": 270,
+                "51-55": 275,
+                "56-60": 280,
+                "61-65": 285,
+                "66-70": 294
+            }
         };
 
         const wholeLifeKeys = ['wealth_99_5', 'wealth_happy_99_10', 'wealth_legacy_99_3'];
@@ -621,20 +873,178 @@
             const p = products[prodKey];
             const promo = promotions[promoKey];
             let maxMult = (p.group === 1) ? promo.group1_mult : promo.group2_mult;
-            let calculatedDeposit = premium * userMulti;
-            let actualMaxDeposit = premium * maxMult;
             
-            if (p.group === 2 && actualMaxDeposit > 200000000) {
-                 actualMaxDeposit = 200000000;
-                 maxText.innerText = `สูงสุดตามสิทธิ์: ${maxMult} เท่า (จำกัด 200 ล้านบาท)`;
+            // 3. Allow any multiplier up to max, but calculate based on user input
+            let calculatedDeposit = premium * userMulti;
+            
+            // Apply cap rules for group 2
+            if (p.group === 2) {
+                let maxDeposit = premium * maxMult;
+                if (maxDeposit > 200000000) {
+                    maxDeposit = 200000000;
+                    maxText.innerText = `สูงสุดตามสิทธิ์: ${maxMult} เท่า (จำกัด 200 ล้านบาท)`;
+                } else {
+                    maxText.innerText = `สูงสุดตามสิทธิ์: ${maxMult} เท่า`;
+                }
+                
+                // If user multiplier exceeds max, cap at max
+                if (userMulti > maxMult) {
+                    calculatedDeposit = Math.min(calculatedDeposit, maxDeposit);
+                }
+                
+                // Additional cap for group 2
+                if (calculatedDeposit > 200000000) {
+                    calculatedDeposit = 200000000;
+                }
             } else {
-                 maxText.innerText = `สูงสุดตามสิทธิ์: ${maxMult} เท่า`;
+                maxText.innerText = `สูงสุดตามสิทธิ์: ${maxMult} เท่า`;
+                if (userMulti > maxMult) {
+                    calculatedDeposit = premium * maxMult;
+                }
             }
-
-            if (userMulti > maxMult) calculatedDeposit = Math.min(premium * userMulti, actualMaxDeposit);
-            if (p.group === 2) calculatedDeposit = Math.min(calculatedDeposit, 200000000);
             
             calcField.value = formatMoney(calculatedDeposit);
+        }
+        
+        function calculatePremium(productKey, age, sumAssured) {
+            const product = products[productKey];
+            if (!product) return 0;
+            
+            let premium = 0;
+            
+            switch(product.premiumCalc) {
+                case "fixed":
+                    // For fixed premium products, premium equals sum assured
+                    premium = sumAssured;
+                    
+                    // Apply discounts for specific products
+                    if (productKey === "wealth_15_5_plus" || productKey === "wealth_15_5_max") {
+                        let discount = 0;
+                        if (sumAssured >= 1000000) discount = 25;
+                        else if (sumAssured >= 500000) discount = 15;
+                        else if (sumAssured >= 100000) discount = 5;
+                        
+                        premium = sumAssured - (discount * (sumAssured / 1000));
+                    }
+                    break;
+                    
+                case "age_band":
+                    // For age band products
+                    if (productKey === "saving_14_6") {
+                        let rate = 0;
+                        if (age <= 50) rate = ageBandRates["saving_14_6"]["0-50"];
+                        else if (age <= 70) rate = ageBandRates["saving_14_6"]["51-70"];
+                        else rate = ageBandRates["saving_14_6"]["71-80"];
+                        
+                        // Apply discount for sum >= 1M
+                        if (sumAssured >= 1000000) {
+                            if (age <= 50) rate -= 17;
+                            else if (age <= 70) rate -= 10;
+                        }
+                        
+                        premium = (rate * sumAssured) / 1000;
+                    } else if (productKey === "saving_15_6") {
+                        let rate = 0;
+                        if (age <= 40) rate = ageBandRates["saving_15_6"]["0-40"];
+                        else if (age <= 45) rate = ageBandRates["saving_15_6"]["41-45"];
+                        else if (age <= 50) rate = ageBandRates["saving_15_6"]["46-50"];
+                        else if (age <= 55) rate = ageBandRates["saving_15_6"]["51-55"];
+                        else if (age <= 60) rate = ageBandRates["saving_15_6"]["56-60"];
+                        else if (age <= 65) rate = ageBandRates["saving_15_6"]["61-65"];
+                        else rate = ageBandRates["saving_15_6"]["66-70"];
+                        
+                        // Apply discounts (simplified)
+                        if (sumAssured >= 500000) rate -= 5;
+                        else if (sumAssured >= 300000) rate -= 3;
+                        
+                        premium = (rate * sumAssured) / 1000;
+                    }
+                    break;
+                    
+                case "table":
+                    // For table-based products (simplified)
+                    const table = premiumTables[productKey];
+                    if (table) {
+                        // Use male table as default (simplified)
+                        const rateArray = table.male;
+                        const ageIndex = Math.min(age, rateArray.length - 1);
+                        const ratePerThousand = rateArray[ageIndex] || 10;
+                        premium = (ratePerThousand * sumAssured) / 1000;
+                    } else {
+                        premium = sumAssured; // Fallback
+                    }
+                    break;
+                    
+                default:
+                    premium = sumAssured;
+            }
+            
+            return Math.max(premium, 50000); // Minimum premium rule
+        }
+        
+        function calculateInsuranceCashflow(productKey, age, sumAssured, premiumPaid) {
+            const product = products[productKey];
+            if (!product) return { cashflows: [], tableRows: [], totalPrem: 0, totalBenefit: 0 };
+            
+            const endYear = product.coverTerm || (product.endAge ? product.endAge - age : 99 - age);
+            const payTerm = product.payTerm;
+            
+            let cashflows = [-premiumPaid]; // Year 0: Initial premium payment (outflow)
+            let tableRows = [];
+            let totalPrem = premiumPaid;
+            let totalBenefit = 0;
+            
+            for (let year = 1; year <= endYear; year++) {
+                // Premium payment for this year (if still in payment term)
+                let premiumThisYear = (year <= payTerm) ? premiumPaid : 0;
+                
+                // Benefit for this year
+                let benefitThisYear = 0;
+                
+                // Check for cashback
+                if (product.cashbackYears && product.cashbackYears.includes(year)) {
+                    if (product.cashbackRates) {
+                        // For products with varying cashback rates
+                        benefitThisYear += sumAssured * (product.cashbackRates[year] / 100);
+                    } else if (product.cashbackRate > 0) {
+                        benefitThisYear += sumAssured * (product.cashbackRate / 100);
+                    }
+                }
+                
+                // Maturity benefit
+                if (year === endYear && product.maturityRate) {
+                    benefitThisYear += sumAssured * (product.maturityRate / 100);
+                }
+                
+                totalPrem += premiumThisYear;
+                totalBenefit += benefitThisYear;
+                
+                // Cashflow for IRR calculation: Benefit - Next Premium
+                let nextPremium = (year < payTerm) ? premiumPaid : 0;
+                let netCashflow = benefitThisYear - nextPremium;
+                
+                // For final year, no next premium
+                if (year === endYear) {
+                    netCashflow = benefitThisYear;
+                }
+                
+                cashflows.push(netCashflow);
+                
+                tableRows.push({
+                    age: age + year - 1,
+                    year: year,
+                    premium: premiumThisYear,
+                    accPremium: totalPrem,
+                    benefit: benefitThisYear
+                });
+            }
+            
+            return {
+                cashflows: cashflows,
+                tableRows: tableRows,
+                totalPrem: totalPrem,
+                totalBenefit: totalBenefit
+            };
         }
         
         function calculate() {
@@ -642,7 +1052,7 @@
                 const prodKey = document.getElementById('productSelect').value;
                 const initialAge = parseInt(document.getElementById('age').value);
                 const sumAssured = parseFloat(document.getElementById('sumAssured').value);
-                const premium = parseFloat(document.getElementById('premium').value);
+                const userPremium = parseFloat(document.getElementById('premium').value);
                 const promoKey = document.getElementById('promoType').value;
                 const userMulti = parseFloat(document.getElementById('depMultiplier').value);
                 const deposit = parseFloat(document.getElementById('calcDepositAmount').value.replace(/,/g, '')) || 0;
@@ -654,7 +1064,7 @@
                 if (!prodKey) errors.push("กรุณาเลือกแบบประกัน");
                 if (isNaN(initialAge)) errors.push("กรุณาระบุอายุผู้เอาประกัน");
                 if (isNaN(sumAssured) || sumAssured <= 0) errors.push("กรุณาระบุทุนประกัน");
-                if (isNaN(premium) || premium < 50000) errors.push("เบี้ยประกันต้องไม่ต่ำกว่า 50,000 บาท");
+                if (isNaN(userPremium) || userPremium < 50000) errors.push("เบี้ยประกันต้องไม่ต่ำกว่า 50,000 บาท");
                 if (isNaN(userMulti) || userMulti <= 0) errors.push("กรุณาระบุจำนวนเท่า (Multiplier)");
                 if (deposit <= 0) errors.push("ยอดเงินฝากต้องมากกว่า 0 บาท");
                 
@@ -678,54 +1088,55 @@
                 const promo = promotions[promoKey];
                 const isWholeLife = wholeLifeKeys.includes(prodKey);
 
-                // --- Insurance Calcs ---
-                let endYear = product.coverTerm || (product.endAge ? product.endAge - initialAge : 99 - initialAge);
-                if (endYear <= 0) endYear = 1;
+                // Calculate actual premium based on product logic
+                const actualPremium = calculatePremium(prodKey, initialAge, sumAssured);
+                
+                // Use calculated premium if user premium is too low
+                const premiumToUse = Math.max(userPremium, actualPremium);
+                
+                // 1. Calculate Insurance Cash Flows
+                const insResult = calculateInsuranceCashflow(prodKey, initialAge, sumAssured, premiumToUse);
+                const insCashflows = insResult.cashflows;
+                const insTableRows = insResult.tableRows;
+                const totalPrem = insResult.totalPrem;
+                const totalBenefit = insResult.totalBenefit;
+                
+                // Calculate IRR using correct IRR formula
+                const insIRR = calculateIRR(insCashflows);
+                fullInsRows = insTableRows;
 
-                let totalPrem = 0;
-                let totalBenefit = 0;
-                let insIrrStream = [-premium]; 
-                let tableRows = [];
-
-                for (let y = 1; y <= endYear; y++) {
-                    let premPaid = (y <= product.payTerm) ? premium : 0;
-                    let benefit = 0;
-                    // Simplified Benefit Logic
-                    if (product.customCB) {
-                         // ... (Add specific product logic here if needed for accurate flow)
-                    } else if (product.cbRate > 0) {
-                        if (product.cbFreq === 1) benefit += sumAssured * (product.cbRate / 100);
-                        else if (product.cbFreq === 2 && y % 2 === 0) benefit += sumAssured * (product.cbRate / 100);
-                    }
-                    if (y === endYear) benefit += sumAssured * (product.matRate / 100);
-
-                    totalPrem += premPaid;
-                    totalBenefit += benefit;
-                    let nextPrem = (y < product.payTerm) ? premium : 0; 
-                    if (y < endYear) insIrrStream.push(benefit - nextPrem); 
-                    else insIrrStream.push(benefit); 
-
-                    tableRows.push({ age: initialAge + y - 1, year: y, premium: premPaid, accPremium: totalPrem, benefit: benefit });
-                }
-
-                const insIRR = calculateIRR(insIrrStream);
-                fullInsRows = tableRows;
-
-                // --- Deposit Calcs (Simple Interest Annual) ---
+                // 2. Calculate Deposit Returns
                 const rate = promo.interest / 100;
                 const termYears = promo.years;
-                const grossIntPerYear = deposit * rate; // Simple interest per year
+                const grossIntPerYear = deposit * rate;
                 const totalGross = grossIntPerYear * termYears;
                 
-                // Tax Calculation (Total > 20,000)
+                // Tax Calculation (15% on portion over 20,000)
                 let totalTax = 0;
                 if (totalGross > 20000) {
-                    totalTax = totalGross * 0.15;
+                    totalTax = (totalGross - 20000) * 0.15;
                 }
                 const totalNetInt = totalGross - totalTax;
-                const netIntPerYear = totalNetInt / termYears; // Average Net for Table display
                 
-                const depIRR = calculateIRR([-deposit, ...Array(Math.floor(termYears)).fill(0).map((_,i) => i === Math.floor(termYears)-1 ? deposit + totalNetInt : 0)]); // Rough estimate for display
+                // Deposit cash flows: initial deposit (outflow), interest payments, principal return
+                let depCashflows = [-deposit];
+                if (termYears === 0.5) {
+                    // 6-month deposit: interest paid at maturity
+                    depCashflows.push(deposit + totalNetInt);
+                } else {
+                    // Annual interest payments
+                    for (let i = 1; i <= termYears; i++) {
+                        const yearInterest = totalNetInt / termYears;
+                        if (i === termYears) {
+                            // Last year: return principal + final interest
+                            depCashflows.push(deposit + yearInterest);
+                        } else {
+                            depCashflows.push(yearInterest);
+                        }
+                    }
+                }
+                
+                const depIRR = calculateIRR(depCashflows);
 
                 // --- UI Updates ---
                 document.getElementById('resultSection').classList.remove('hidden');
@@ -735,8 +1146,8 @@
                 document.getElementById('sumInsBenefit').innerText = formatMoney(totalBenefit);
                 
                 const insNet = totalBenefit - totalPrem;
-                const ratioPct = (sumAssured / premium) * 100;
-                const ratioTimes = (sumAssured / premium);
+                const ratioPct = (sumAssured / premiumToUse) * 100;
+                const ratioTimes = (sumAssured / premiumToUse);
 
                 if (isWholeLife) {
                     document.getElementById('labelInsNet').innerText = "ความคุ้มครองชีวิต";
@@ -760,7 +1171,7 @@
                 document.getElementById('sumDepTotalBenefit').innerText = formatMoney(deposit + totalGross);
                 document.getElementById('sumDepGrossInt').innerText = formatMoney(totalGross);
                 document.getElementById('sumDepNetInt').innerText = formatMoney(totalNetInt);
-                document.getElementById('depIrrValue').innerText = promo.interest.toFixed(2) + "%"; // Simple Interest Rate for TD
+                document.getElementById('depIrrValue').innerText = isNaN(depIRR) ? "N/A" : depIRR.toFixed(2) + "%";
 
                 // Net Profit Container
                 const container = document.getElementById('netProfitContainer');
@@ -773,7 +1184,7 @@
                             <div class="text-center">
                                 <p class="text-gray-300 text-xs mb-1 uppercase tracking-widest">ความคุ้มครองชีวิต</p>
                                 <h2 class="text-3xl font-bold text-green-400">${formatMoney(sumAssured)}</h2>
-                                <p class="text-[10px] text-gray-400 mt-1">คุ้มครอง ${endYear} ปี</p>
+                                <p class="text-[10px] text-gray-400 mt-1">คุ้มครอง ${product.coverTerm || (product.endAge - initialAge)} ปี</p>
                             </div>
                             <div class="hidden md:block w-px h-16 bg-gray-600"></div>
                             <div class="text-center">
@@ -793,8 +1204,8 @@
                     `;
                 }
 
-                // Tables & PDF
-                renderInsTable(tableRows, endYear);
+                // Tables
+                renderInsTable(insTableRows, product.coverTerm || (product.endAge - initialAge));
                 document.getElementById('tblSumPremium').innerText = formatMoney(totalPrem);
                 document.getElementById('tblSumBenefit').innerText = formatMoney(totalBenefit);
                 document.getElementById('dashInsCost').innerText = formatMoney(totalPrem);
@@ -807,9 +1218,10 @@
                 document.getElementById('dashDepNet').innerText = formatMoney(totalNetInt);
                 if(totalTax > 0) document.getElementById('taxInfo').classList.remove('hidden'); else document.getElementById('taxInfo').classList.add('hidden');
 
-                document.getElementById('debugInsFlow').innerText = JSON.stringify(insIrrStream);
+                document.getElementById('debugInsFlow').innerText = JSON.stringify(insCashflows);
+                document.getElementById('debugDepFlow').innerText = JSON.stringify(depCashflows);
                 
-                preparePDFData(product, promo, initialAge, sumAssured, premium, totalPrem, totalBenefit, insNet, insIRR, deposit, totalGross, totalNetInt, promo.interest, netProfitVal, endYear, isWholeLife);
+                preparePDFData(product, promo, initialAge, sumAssured, premiumToUse, totalPrem, totalBenefit, insNet, insIRR, deposit, totalGross, totalNetInt, depIRR, netProfitVal, insTableRows.length, isWholeLife);
 
                 switchTab(1);
                 document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
@@ -824,18 +1236,14 @@
             const tbody = document.getElementById('depTableBody');
             tbody.innerHTML = '';
             
-            // Generate rows for each year (or 6 months)
-            let loopCount = Math.ceil(years);
-            let displayYears = years;
-            let grossPerYear = totalGross / years;
-            let netPerYear = totalNet / years; // Display avg if needed, or calculate exact
-
-            // If 6 months
             if (years === 0.5) {
                 tbody.innerHTML += `<tr class="border-b hover:bg-gray-50"><td class="py-2">6 เดือน</td><td class="py-2 text-gray-600">${formatMoney(deposit)}</td><td class="py-2">${rate}%</td><td class="py-2 text-blue-600">${formatMoney(totalGross)}</td><td class="py-2 text-green-600 font-bold">${formatMoney(totalNet)}</td></tr>`;
             } else {
-                for(let i=1; i<=loopCount; i++) {
-                     tbody.innerHTML += `
+                const grossPerYear = totalGross / years;
+                const netPerYear = totalNet / years;
+                
+                for(let i=1; i<=years; i++) {
+                    tbody.innerHTML += `
                         <tr class="border-b hover:bg-gray-50">
                             <td class="py-2">${i}</td>
                             <td class="py-2 text-gray-600">${formatMoney(deposit)}</td>
@@ -847,7 +1255,6 @@
                 }
             }
 
-            // Footer Row
             tbody.innerHTML += `
                 <tr class="bg-gray-100 font-bold border-t-2 border-gray-200">
                     <td class="py-3">รวม</td>
@@ -860,12 +1267,10 @@
         }
 
         function preparePDFData(product, promo, age, sumAssured, premium, insCost, insBen, insNet, insIRR, depPrincipal, depGross, depNet, depIRR, netProfit, endYear, isWholeLife) {
-            // Date
             const date = new Date();
             const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            document.getElementById('pdfGenDate').innerText = `Generates : ${date.getDate().toString().padStart(2, '0')} ${months[date.getMonth()]} ${date.getFullYear()}`;
+            document.getElementById('pdfGenDate').innerText = `${date.getDate().toString().padStart(2, '0')} ${months[date.getMonth()]} ${date.getFullYear()}`;
 
-            // Map Data
             document.getElementById('pdfProdName').innerText = product.name;
             document.getElementById('pdfPromoName').innerText = promo.name;
             document.getElementById('pdfPromoRate').innerText = promo.interest.toFixed(2) + "%";
@@ -873,55 +1278,28 @@
             document.getElementById('pdfInsCost').innerText = formatMoney(insCost);
             document.getElementById('pdfInsBenefit').innerText = formatMoney(insBen);
 
-            // Handle Whole Life Specifics in PDF
             if (isWholeLife) {
                 document.getElementById('pdfLblInsNet').innerText = "ความคุ้มครองชีวิต";
                 document.getElementById('pdfInsNet').innerText = formatMoney(sumAssured);
                 document.getElementById('pdfLblInsIRR').innerText = "ความคุ้มครอง:เบี้ยประกัน";
                 
                 let ratio = (sumAssured / premium);
-                document.getElementById('pdfInsIRR').innerHTML = `<span class="text-orange-500">${(ratio*100).toFixed(0)}%</span> <span class="text-sm text-gray-500 font-normal">(${ratio.toFixed(2)} เท่า)</span>`;
-                
-                // Update Summary Card for Whole Life
-                document.getElementById('pdfSummaryContent').innerHTML = `
-                    <div class="flex justify-between items-center h-full">
-                        <div class="text-center w-1/2 border-r border-yellow-200 pr-4">
-                            <h3 class="text-xl font-bold text-gray-600 mb-2">ความคุ้มครองชีวิต</h3>
-                            <h2 class="text-4xl font-bold text-blue-800">${formatMoney(sumAssured)}</h2>
-                            <p class="text-sm text-gray-400 mt-1">คุ้มครอง ${endYear} ปี</p>
-                        </div>
-                        <div class="text-center w-1/2 pl-4">
-                            <h3 class="text-xl font-bold text-gray-600 mb-2">ผลประโยชน์เงินฝากสุทธิ</h3>
-                            <h2 class="text-4xl font-bold text-green-600">${formatMoney(depNet)}</h2>
-                            <p class="text-sm text-gray-400 mt-1">หลังหักภาษี</p>
-                        </div>
-                    </div>
-                `;
+                document.getElementById('pdfInsIRR').innerHTML = `<span class="text-orange-500">${(ratio*100).toFixed(0)}%</span>`;
             } else {
                 document.getElementById('pdfLblInsNet').innerText = "ผลประโยชน์สุทธิ";
                 document.getElementById('pdfInsNet').innerText = formatMoney(insNet);
                 document.getElementById('pdfLblInsIRR').innerText = "IRR Insurance";
                 document.getElementById('pdfInsIRR').innerText = isNaN(insIRR) ? "N/A" : insIRR.toFixed(2) + "%";
-                
-                // Standard Summary Card
-                document.getElementById('pdfSummaryContent').innerHTML = `
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-700">ผลประโยชน์สุทธิ (Net Profit)</h3>
-                            <p class="text-sm text-gray-400 mt-1">ผลรวมสุทธิหลังหักต้นทุนและภาษี</p>
-                        </div>
-                        <div class="text-right">
-                            <h2 class="text-5xl font-bold text-orange-500">${formatMoney(netProfit)}</h2>
-                            <p class="text-lg text-gray-500">THB</p>
-                        </div>
-                    </div>
-                `;
             }
 
             document.getElementById('pdfDepPrincipal').innerText = formatMoney(depPrincipal);
             document.getElementById('pdfDepGross').innerText = formatMoney(depGross);
             document.getElementById('pdfDepNet').innerText = formatMoney(depNet);
-            document.getElementById('pdfDepIRR').innerText = depIRR.toFixed(2) + "%";
+            document.getElementById('pdfDepIRR').innerText = isNaN(depIRR) ? "N/A" : depIRR.toFixed(2) + "%";
+            
+            document.getElementById('pdfNetProfit').innerText = formatMoney(netProfit);
+            document.getElementById('pdfCoverTerm').innerText = endYear + " ปี";
+            document.getElementById('pdfDepositTerm').innerText = promo.years + " ปี";
         }
 
         function renderInsTable(rows, totalYears, isFullDisplay = false) {
@@ -965,24 +1343,72 @@
         function calculateIRR(values, guess = 0.1) {
             const maxIter = 1000;
             const precision = 1e-7;
-            for (let i = 0; i < maxIter; i++) {
-                let npv = 0;
-                let dNpv = 0;
+            
+            // NPV function
+            function npv(rate) {
+                let npvValue = 0;
                 for (let t = 0; t < values.length; t++) {
-                    npv += values[t] / Math.pow(1 + guess, t);
-                    dNpv -= t * values[t] / Math.pow(1 + guess, t + 1);
+                    npvValue += values[t] / Math.pow(1 + rate, t);
                 }
-                let newGuess = guess - npv / dNpv;
-                if (Math.abs(newGuess - guess) < precision) return newGuess * 100;
-                guess = newGuess;
+                return npvValue;
             }
-            return NaN;
+            
+            // Use Newton-Raphson method
+            let rate = guess;
+            for (let i = 0; i < maxIter; i++) {
+                let npvValue = npv(rate);
+                let dNpv = 0;
+                
+                // Calculate derivative
+                for (let t = 0; t < values.length; t++) {
+                    dNpv -= t * values[t] / Math.pow(1 + rate, t + 1);
+                }
+                
+                if (Math.abs(dNpv) < precision) break;
+                
+                let newRate = rate - npvValue / dNpv;
+                
+                if (Math.abs(newRate - rate) < precision) {
+                    return newRate * 100;
+                }
+                
+                rate = newRate;
+            }
+            
+            // Fallback to binary search if Newton-Raphson fails
+            let low = -0.9999;
+            let high = 10;
+            let mid;
+            
+            for (let i = 0; i < 100; i++) {
+                mid = (low + high) / 2;
+                let npvMid = npv(mid);
+                
+                if (Math.abs(npvMid) < precision) {
+                    return mid * 100;
+                }
+                
+                if (npvMid > 0) {
+                    low = mid;
+                } else {
+                    high = mid;
+                }
+            }
+            
+            return mid * 100;
         }
 
         function generatePDF() {
             window.scrollTo(0,0);
             const element = document.getElementById('pdfTemplate');
-            const opt = { scale: 2, useCORS: true, backgroundColor: "#ffffff" };
+            const opt = { 
+                scale: 2, 
+                useCORS: true, 
+                backgroundColor: "#ffffff",
+                logging: false,
+                width: element.offsetWidth,
+                height: element.offsetHeight
+            };
 
             html2canvas(element, opt).then(canvas => {
                 const imgData = canvas.toDataURL('image/png');
@@ -991,7 +1417,7 @@
                 const pdfWidth = pdf.internal.pageSize.getWidth();
                 const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
                 pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-                pdf.save('Promotion_Summary.pdf');
+                pdf.save('Promotion_Summary_' + new Date().getTime() + '.pdf');
             });
         }
 
